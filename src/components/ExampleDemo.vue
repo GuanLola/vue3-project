@@ -1,6 +1,5 @@
 <template>
   <div>
-    子组件
     <ExampleSonDemoVue :visible="visible" @close="changeVisible" />
   </div>
 </template>
