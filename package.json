@@ -14,8 +14,31 @@
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "commitlint": "commitlint --config commitlint.config.cjs -e -V",
-    "prepare": "husky"
+    "commitlint": "commitlint --edit",
+    "prepare": "husky",
+    "commit": "git-cz",
+    "lint:lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{cjs,json}": [
+      "prettier --write"
+    ],
+    "*.{vue,html}": [
+      "eslint --fix",
+      "prettier --write",
+      "stylelint --fix"
+    ],
+    "*.{scss,css}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "pinia": "^2.1.7",
@@ -41,6 +64,7 @@
     "eslint-plugin-vue": "^9.23.0",
     "husky": "^9.0.11",
     "jsdom": "^24.0.0",
+    "lint-staged": "^15.2.5",
     "npm-run-all2": "^6.1.2",
     "prettier": "^3.2.5",
     "start-server-and-test": "^2.0.3",
